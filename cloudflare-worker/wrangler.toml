@@ -1,0 +1,23 @@
+name = "pwc-contact-form"
+main = "src/index.js"
+compatibility_date = "2024-11-01"
+
+# Free tier (Workers.dev) — no route/zone config needed. Deploying gives you
+# a URL like https://pwc-contact-form.<your-subdomain>.workers.dev
+
+[vars]
+# Where submissions get emailed. Change this if it should go somewhere
+# other than the club's inbox.
+TO_EMAIL = "u_b4yboqe61h@zelnro.com"
+
+# Sender address Resend sends "from". Until you verify your own domain on
+# Resend, use their shared test sender below — it works immediately with
+# no setup. Once you verify a domain (see cloudflare-worker/README.md),
+# switch this to something like "PWC Website <contact@petalumawc.com>".
+FROM_EMAIL = "PWC Website <onboarding@resend.dev>"
+
+# RESEND_API_KEY and TURNSTILE_SECRET_KEY are secrets, not vars — set
+# separately via:
+#   npx wrangler secret put RESEND_API_KEY
+#   npx wrangler secret put TURNSTILE_SECRET_KEY
+# so neither ends up in this file or in git.
