@@ -8,7 +8,7 @@ compatibility_date = "2024-11-01"
 [vars]
 # Where submissions get emailed. Change this if it should go somewhere
 # other than the club's inbox.
-TO_EMAIL = "u_kf4w20h92h@zelnro.com"
+TO_EMAIL = "zbabel@ucsc.edu"
 
 # Sender address Resend sends "from". Until you verify your own domain on
 # Resend, use their shared test sender below — it works immediately with
