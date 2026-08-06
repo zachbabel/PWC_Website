@@ -260,14 +260,52 @@ var teamsnapNewSettings = {"blogId":"2963","clubUuid":"10690607524081566824","or
 	<div class="fl-col-content fl-node-content">
 	<div class="fl-module fl-module-contact-form fl-node-6585b3d1ea7a8" data-node="6585b3d1ea7a8">
 	<div class="fl-module-content fl-node-content">
-		<div class="fl-static-contact-fallback" style="text-align:center;padding:20px 0;">
-      <p style="margin-bottom:16px;">We'd love to hear from you! Send us an email and we'll get back to you as soon as we can.</p>
-      <a href="mailto:petalumawc@gmail.com" class="fl-button" role="button" style="display:inline-block;">
-        <span class="fl-button-text">Email Petaluma Wrestling Club</span>
-      </a>
-    </div>
+		<style>
+			/* Visually hides the honeypot field from real visitors while keeping it
+			   in the DOM for bots to (hopefully) fill in. */
+			.pwc-hp-field{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;}
+		</style>
+		<form class="fl-contact-form" id="pwc-contact-form" novalidate>
+			<div class="fl-input-group fl-name">
+				<label for="pwc-name" class="fl-contact-form-label-hidden">Your name</label>
+				<span class="fl-contact-error" id="pwc-name-error">Please enter your name.</span>
+				<input type="text" id="pwc-name" name="name" placeholder="Your name" autocomplete="name" />
+			</div>
+			<div class="fl-input-group fl-email">
+				<label for="pwc-email" class="fl-contact-form-label-hidden">Your email</label>
+				<span class="fl-contact-error" id="pwc-email-error">Please enter a valid email.</span>
+				<input type="email" id="pwc-email" name="email" placeholder="Your email" autocomplete="email" />
+			</div>
+			<div class="fl-input-group fl-message">
+				<label for="pwc-message" class="fl-contact-form-label-hidden">Your message</label>
+				<span class="fl-contact-error" id="pwc-message-error">Please enter a message.</span>
+				<textarea id="pwc-message" name="message" placeholder="Your message"></textarea>
+			</div>
+			<!-- Honeypot: invisible to real visitors; spam bots tend to fill in every
+			     field they find. Any submission with this filled in is silently dropped. -->
+			<div class="pwc-hp-field" aria-hidden="true">
+				<label for="pwc-website">Leave this field blank</label>
+				<input type="text" id="pwc-website" name="website" tabindex="-1" autocomplete="off" />
+			</div>
+			<div class="fl-input-group" id="pwc-turnstile"></div>
+			<div class="fl-button-wrap fl-button-width-auto fl-button-left">
+				<a href="#" target="_self" class="fl-button" id="pwc-submit-btn" role="button">
+					<span class="fl-button-text">Send</span>
+				</a>
+			</div>
+			<span class="fl-success-none" id="pwc-success-msg" style="display:none;">Message sent! We'll get back to you soon.</span>
+			<span class="fl-send-error" id="pwc-error-msg" style="display:none;"></span>
+		</form>
+		<p style="text-align:center;margin-top:16px;font-size:14px;">
+			Prefer email? Reach us directly at <a href="mailto:petalumawc@gmail.com">petalumawc@gmail.com</a>.
+		</p>
 	</div>
 </div>
+<script src="../assets/contact-form.js" defer></script>
+<!-- Must come after contact-form.js (both deferred, so they run in this
+     document order) so window.pwcTurnstileOnLoad exists by the time
+     Turnstile's script is ready to call it. -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=pwcTurnstileOnLoad" defer></script>
 	</div>
 </div>
 	</div>
