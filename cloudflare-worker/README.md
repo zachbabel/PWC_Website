@@ -156,4 +156,4 @@ Together these cover both casual bots and a deliberate person scripting
 requests at the URL. Nothing stops a human manually filling out the form
 over and over, but that's a much smaller, self-limiting problem — and
 Cloudflare's free tier (100k requests/day) and Resend's free tier (100
-emails/day) both put a hard ceiling on how bad that could get anyway.
+emails/day) both put a hard ceiling on how bad that could get anyway. 
